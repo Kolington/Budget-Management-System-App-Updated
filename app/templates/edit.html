@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ post['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" placeholder="Budget title" class="form-control" value="{{ request.form['title'] or post['title'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" name="date" placeholder="Budget date" class="form-control" value="{{ request.form['date'] or post['date'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" placeholder="Budget description" class="form-control" value="{{ request.form['description'] or post['description'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" placeholder="Budget amount" class="form-control" value="{{ request.form['amount'] or post['amount'] }}" pattern="^\₦\d{1,3}(,\d{3})*(\.\d+)?₦"></input>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Catogory</label>
+        <input type="text" name="category" placeholder="Budget category (Income or Expense)" class="form-control" value="{{ request.form['category'] or post['category'] }}"></input>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<hr>
+
+<form action="{{ url_for('delete', id=post['id']) }}" method="POST">
+    <input type="submit" value="Delete Budget Entry" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this budget entry?')">
+</form>
+{% endblock %}

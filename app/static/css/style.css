@@ -1,0 +1,21 @@
+h1 {
+    border: 2px #eee solid;
+    color: skyblue;
+    text-align: center;
+    padding: 10px;
+}
+
+table, th, td { 
+    border:1px solid black; 
+}
+
+footer {
+    padding: 20px 15%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background: black;
+    color: white;
+}

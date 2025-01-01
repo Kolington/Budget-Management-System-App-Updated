@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Profile {% endblock %}</h1>
+
+<h3>Welcome User {{ username }}.</h3>
+<h4><marquee>You are Logged In !!</marquee></h4>
+
+<a href="{{ url_for('login') }}" id='box'>Logout</a>
+
+<a href="{{ url_for('create') }}" id='box'>Create Budget</a>
+
+<table style="width:100%; border:1px solid black; visibility:hidden;">
+    <tr>
+        <th>Username</th> 
+        <th>Password</th>
+    </tr>
+    {%for profile in data%}
+        <tr>
+           <th>{{profile[0]}}</th> 
+           <th>{{profile[1]}}</th>
+        </tr>
+    {%endfor%}
+</table>
+
+{% endblock %}
